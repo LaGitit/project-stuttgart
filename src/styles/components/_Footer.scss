@@ -1,0 +1,95 @@
+@use "@styles/utils/fonts" as *;
+
+.portfolio-footer {
+  background: #0a0a0a;
+  padding: 4rem 2rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #333, transparent);
+    z-index: 1;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-logo {
+    height: 8vh;
+    min-height: 60px;
+    max-height: 80px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.05));
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .legal-disclaimer {
+    font-family: $font-body;
+    font-size: 1rem;
+    color: #888;
+    text-align: center;
+    max-width: 480px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    margin: 0.5rem 0;
+    font-weight: 300;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1rem;
+
+    .social-icon {
+      color: #aaa;
+      font-size: 1.5rem;
+      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      &:hover {
+        color: #fff;
+        transform: translateY(-3px) scale(1.1);
+      }
+    }
+
+    .github-link:hover .social-icon {
+      color: #f0f0f0;
+    }
+    .email-link:hover .social-icon {
+      color: #d44638;
+    }
+    .stackoverflow-link:hover .social-icon {
+      color: #f48024;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+
+    .footer-logo {
+      min-height: 50px;
+    }
+
+    .legal-disclaimer {
+      font-size: 0.7rem;
+    }
+
+    .social-links {
+      gap: 1.25rem;
+    }
+  }
+}

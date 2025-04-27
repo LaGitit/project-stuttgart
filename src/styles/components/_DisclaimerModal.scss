@@ -1,0 +1,114 @@
+@use "../utils/fonts" as *;
+
+.disclaimer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: grid;
+  place-items: center;
+  z-index: 10000;
+  padding: 2rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(2px);
+}
+
+.disclaimer-modal {
+  width: min(100%, 600px);
+  max-height: 80vh;
+  background: #111;
+  border: 1px solid #333;
+  padding: 2.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  .disclaimer-heading {
+    font-family: $font-headline;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 1px;
+      background: #ff0000;
+    }
+  }
+
+  .disclaimer-content {
+    font-family: $font-body;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: #ccc;
+
+    p {
+      margin-bottom: 1.2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .disclaimer-button {
+    align-self: flex-end;
+    background: #ff0000;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-family: $font-headline;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+
+    &:hover {
+      background: darken(#ff0000, 10%);
+    }
+
+    &:focus {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 2px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disclaimer-overlay,
+  .disclaimer-modal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .disclaimer-modal {
+    padding: 1.5rem;
+
+    .disclaimer-heading {
+      font-size: 1.3rem;
+    }
+
+    .disclaimer-button {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@use "utils/mixins" as *;
+@use "utils/fonts" as *;
+
+@use "components/DisclaimerModal";
+@use "components/ElectrificationPrelude";
+@use "components/Footer";
+@use "components/GoldenEra";
+@use "components/hero";
+@use "components/HeroTransition";
+@use "components/LifestyleGallery";
+@use "components/ModernIcons";
+@use "components/OriginStory.scss";
+@use "components/Preloader";
+@use "components/TaycanReveal";
+@use "components/TransitionStatement";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: $font-body;
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+}

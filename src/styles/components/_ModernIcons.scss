@@ -1,0 +1,440 @@
+@use "@styles/utils/fonts" as *;
+
+.modern-icons {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #1a1a1a 0%, #111 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+
+  .section-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+
+    h2 {
+      font-family: $font-headline;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: white;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-family: $font-body;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  .scroll-container {
+    width: 100%;
+    height: 70vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .car-gallery {
+    display: flex;
+    height: 100%;
+    width: 300vw;
+  }
+
+  .car-slide {
+    flex: 0 0 100vw;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .car-image {
+        width: auto;
+        height: 80%;
+        max-width: 80%;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+
+        &:hover {
+          transform: scale(1.02);
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+      }
+
+      .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0.2) 30%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        pointer-events: none;
+      }
+    }
+
+    .car-info {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      width: 100%;
+      padding: 0 2rem;
+
+      .era-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-family: $font-accent;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .car-label {
+        color: white;
+        text-align: left;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+
+        h3 {
+          font-family: $font-headline;
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+        }
+
+        .nickname {
+          font-family: $font-accent;
+          font-style: italic;
+          font-size: clamp(1.2rem, 3vw, 2rem);
+          color: #ff0000;
+          margin-bottom: 1.5rem;
+        }
+
+        .description {
+          font-weight: 300;
+          line-height: 1.6;
+          max-width: 600px;
+          margin-bottom: 2rem;
+          font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        .specs-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1rem;
+          max-width: 600px;
+
+          .spec-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+
+            &:hover {
+              background: rgba(255, 0, 0, 0.2) !important;
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .pagination-container {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+
+    .pagination-track {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      padding: 0.5rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pagination-indicator {
+      width: 40px;
+      height: 4px;
+      border: none;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+
+      .indicator-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: #ff0000;
+        transition: width 0.3s ease;
+      }
+
+      &.active {
+        width: 60px;
+        background: rgba(255, 255, 255, 0.1);
+
+        .indicator-bar {
+          width: 100%;
+          transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+      }
+    }
+  }
+
+  .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    &.prev {
+      left: 2rem;
+    }
+
+    &.next {
+      right: 2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-icons {
+    padding: 2rem 0;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+
+    .section-intro {
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .scroll-container {
+      height: 50vh;
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    .car-slide {
+      .image-container {
+        .car-image {
+          height: 60%;
+          max-width: 95%;
+          border-radius: 4px;
+        }
+      }
+
+      .car-info {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        padding: 1rem;
+        margin-top: 1rem;
+        height: auto;
+
+        .era-badge {
+          padding: 0.4rem 1rem;
+          font-size: 0.8rem;
+          margin-bottom: 1rem;
+        }
+
+        .car-label {
+          h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+          }
+
+          .nickname {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+          }
+
+          .description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            max-width: 100%;
+          }
+
+          .specs-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            max-width: 100%;
+
+            .spec-item {
+              padding: 0.6rem 0.8rem;
+              font-size: 0.8rem;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    .pagination-container {
+      position: relative;
+      bottom: auto;
+      margin-top: 1rem;
+      padding: 0 1rem;
+      order: 3;
+
+      .pagination-track {
+        padding: 0.4rem;
+        gap: 0.4rem;
+      }
+
+      .pagination-indicator {
+        width: 25px;
+        height: 3px;
+
+        &.active {
+          width: 35px;
+        }
+      }
+    }
+
+    .nav-arrow {
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-top: 0;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      &.prev {
+        left: 0.5rem;
+      }
+
+      &.next {
+        right: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-icons {
+    padding: 1.5rem 0;
+
+    .car-slide {
+      .image-container {
+        .car-image {
+          height: 50%;
+          border-radius: 3px;
+        }
+      }
+
+      .car-info {
+        .car-label {
+          .specs-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      }
+    }
+
+    .nav-arrow {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}

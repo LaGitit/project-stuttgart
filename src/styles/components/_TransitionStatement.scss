@@ -1,0 +1,98 @@
+@use "@styles/utils/fonts" as *;
+
+.transition-statement {
+  background: #0a0a0a;
+  padding: 8rem 2rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  .text-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+
+    h3 {
+      font-family: $font-headline;
+      font-size: 2.25rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      height: 1px;
+      width: 120px;
+      background: linear-gradient(90deg, transparent, #fff, transparent);
+      margin: 0 auto 2rem;
+      transform-origin: left;
+    }
+
+    p {
+      font-family: $font-body;
+      font-weight: 300;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #aaa;
+      letter-spacing: 0.02em;
+    }
+
+    .explore-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.8rem 2rem;
+      font-family: $font-headline;
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      margin-top: 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        border-color: #ff0000;
+        background: rgba(255, 0, 0, 0.1);
+      }
+
+      .cta-icon {
+        font-size: 1rem;
+      }
+
+      .disclaimer {
+        position: absolute;
+        bottom: -1.5rem;
+        left: 0;
+        width: 100%;
+        font-family: $font-body;
+        font-size: 0.8rem;
+        color: #888;
+        letter-spacing: 0;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 5rem 1.5rem;
+
+    h3 {
+      font-size: 1.75rem !important;
+    }
+
+    p {
+      font-size: 1rem !important;
+    }
+
+    .explore-cta {
+      padding: 0.6rem 1.5rem !important;
+      font-size: 0.9rem !important;
+    }
+  }
+}

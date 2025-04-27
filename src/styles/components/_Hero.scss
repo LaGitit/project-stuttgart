@@ -1,0 +1,325 @@
+@use "@styles/utils/fonts" as *;
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  text-align: center;
+  transition: transform 0.1s linear;
+  padding-top: 4vh;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, filter, opacity;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important;
+  }
+
+  .nav-svg {
+    max-height: 15vh;
+    transition: transform 0.3s;
+    &:hover {
+      #red-accent {
+        opacity: 1;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    font-family: $font-headline;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+}
+
+.sticky-nav {
+  --nav-height: 80px;
+  --nav-padding: 1.5rem;
+  --transition-speed: 0.4s;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(8px);
+  transition: transform var(--transition-speed) cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.3s ease;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transform: translateY(-100%);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 var(--nav-padding);
+  }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-self: start;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateX(-2px);
+    }
+
+    .nav-logo {
+      height: 28px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-text {
+      font-family: $font-headline;
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: white;
+      text-transform: uppercase;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    justify-self: center;
+
+    .nav-link {
+      position: relative;
+      font-family: $font-headline;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #ff0000;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: white;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .config-button {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid #ff0000;
+    padding: 0.6rem 1.8rem;
+    color: white;
+    font-family: $font-headline;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+
+    .button-text {
+      position: relative;
+      top: 1px;
+    }
+
+    .button-icon {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: rgba(255, 0, 0, 0.3);
+
+      .button-icon {
+        transform: translateY(2px);
+      }
+    }
+  }
+
+  .mobile-nav-container {
+    position: relative;
+    justify-self: end;
+  }
+
+  .mobile-menu-button {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.6rem 1.5rem;
+    color: white;
+    font-family: $font-headline;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+
+    .button-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .mobile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 1rem 0;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-nav-link {
+    padding: 0.75rem 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: $font-headline;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    &.config-link {
+      color: #ff0000;
+      margin-top: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    --nav-height: 70px;
+    --nav-padding: 1.25rem;
+
+    .logo-group .logo-text {
+      font-size: 1.4rem;
+    }
+
+    .nav-links {
+      gap: 1.25rem;
+
+      .nav-link {
+        font-size: 1.3rem;
+      }
+    }
+
+    .config-button {
+      padding: 0.5rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    --nav-height: 60px;
+
+    .nav-content {
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-button {
+      display: flex;
+    }
+
+    .config-button.desktop-only {
+      display: none;
+    }
+
+    .logo-group .logo-text {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mobile-dropdown {
+      width: 180px;
+    }
+
+    .mobile-menu-button {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+    }
+  }
+}

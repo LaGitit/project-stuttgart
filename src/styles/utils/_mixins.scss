@@ -1,0 +1,79 @@
+@use "sass:math";
+@use "sass:color";
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "phone" {
+    @media (max-width: 600px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @media (max-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: 901px) {
+      @content;
+    }
+  } @else if $breakpoint == "retina" {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      @content;
+    }
+  }
+}
+
+@mixin fluid-text($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    font-size: $min-font-size;
+
+    @media (min-width: $min-vw) {
+      font-size: calc(
+        #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+          ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+      );
+    }
+
+    @media (min-width: $max-vw) {
+      font-size: $max-font-size;
+    }
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin animate($property, $duration: 0.3s, $easing: ease-out) {
+  transition: $property $duration $easing;
+  will-change: $property;
+}
+
+@mixin porsche-underline($color: #ff0000, $height: 1px) {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -0.2em;
+    left: 0;
+    width: 100%;
+    height: $height;
+    background: $color;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
