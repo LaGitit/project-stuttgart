@@ -1,5 +1,4 @@
 @use "@styles/utils/fonts" as *;
-@use "@styles/utils/mixins" as *;
 
 .hero-transition {
   --transition-duration: 0.6s;
@@ -28,6 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
   }
 
   .marquee-line {
@@ -36,11 +36,18 @@
     justify-content: center;
     gap: clamp(0.75rem, 2vw, 1.5rem);
     margin-bottom: clamp(2rem, 6vh, 4rem);
-    opacity: 0.7;
+    opacity: 1;
     font-family: $font-headline;
-    @include fluid-text(320px, 1200px, 12px, 16px);
     letter-spacing: 0.3em;
     will-change: opacity;
+
+    font-size: calc(
+      12px + (16px - 12px) * ((100vw - 320px) / (1200px - 320px))
+    );
+
+    @media (min-width: 1200px) {
+      font-size: 16px;
+    }
 
     svg {
       width: 0.75em;
@@ -48,7 +55,9 @@
       min-width: 12px;
       min-height: 12px;
       fill: #ff0000;
-      @include animate(transform);
+      transition: transform 0.3s ease-out;
+      will-change: transform;
+      display: inline-block;
 
       &:hover {
         transform: rotate(45deg);
@@ -56,107 +65,132 @@
     }
   }
 
-  .statement {
-    font-family: $font-headline;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: clamp(3rem, 10vh, 8rem);
+  .statement .line {
+    font-size: calc(
+      32px + (72px - 32px) * ((100vw - 320px) / (1200px - 320px))
+    );
+
+    @media (min-width: 1200px) {
+      font-size: 72px;
+    }
+
+    line-height: 1.1;
     will-change: transform, opacity;
 
-    .line {
-      display: block;
-      @include fluid-text(320px, 1200px, 32px, 72px);
-      line-height: 1.1;
-      will-change: transform, opacity;
+    &:first-child {
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25em;
+    }
 
-      &:first-child {
-        letter-spacing: -0.03em;
-        margin-bottom: 0.25em;
+    &:last-child {
+      color: #ff0000;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.2em;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #ff0000;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
-      &:last-child {
-        color: #ff0000;
-        @include porsche-underline();
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
       }
     }
   }
 
-  .scroll-hint-wrapper {
-    position: absolute;
-    bottom: clamp(3rem, 8vh, 4rem);
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 1;
-  }
-
   .scroll-hint {
+    font-size: calc(
+      11px + (13px - 11px) * ((100vw - 320px) / (1200px - 320px))
+    );
+
+    @media (min-width: 1200px) {
+      font-size: 13px;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 2rem;
     font-family: $font-body;
-    @include fluid-text(320px, 1200px, 11px, 13px);
     letter-spacing: 0.1em;
     will-change: opacity;
     margin-top: auto;
     padding-top: 2rem;
 
     .line {
-      width: 1px;
-      height: clamp(30px, 6vh, 40px);
-      background: linear-gradient(to bottom, white 40%, transparent 100%);
-      animation: scroll-hint-pulse 2s var(--easing) infinite;
+      position: relative;
+      width: 2px;
+      height: 30px;
+      background-color: #ff0000;
+      border-radius: 2.5px;
+      margin-bottom: 2rem;
+      animation: arrowDown 1s infinite alternate;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 1.5px solid transparent;
+        border-right: 1.5px solid transparent;
+        border-top: 3px solid #ff0000;
+      }
+
+      @media (max-width: 768px) {
+        height: 18px;
+      }
     }
 
-    &:hover {
-      .line {
-        background: linear-gradient(to bottom, #ff0000 60%, transparent 100%);
-      }
-      span {
-        color: #ff0000;
-      }
+    .arrow {
+      width: 12px;
+      height: 12px;
+      border: 3px solid #ff0000;
+      border-left: 0;
+      border-bottom: 0;
+      transform: rotate(45deg);
+      margin-top: 0.25rem;
     }
   }
 
-  @include respond-to("tablet") {
+  @keyframes arrowDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(20px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-transition {
+      height: auto;
+      padding: 3rem 0;
+    }
+
     .transition-content {
-      .statement .line {
-        @include fluid-text(320px, 768px, 28px, 48px);
-      }
+      min-height: auto;
     }
-  }
 
-  @media (max-height: 600px) {
-    .transition-content {
-      padding-bottom: 4rem;
-      .statement {
-        margin-bottom: 2rem;
-      }
+    .marquee-line {
+      margin-bottom: 2rem;
     }
-  }
-}
 
-@keyframes scroll-hint-pulse {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(10px);
-  }
-}
-
-@include respond-to("reduced-motion") {
-  .hero-transition {
-    --transition-duration: 0.01s;
-
-    * {
-      animation: none !important;
-      transition: none !important;
+    .statement .line {
+      font-size: 48px;
+      margin-bottom: 1.5rem;
     }
   }
 }

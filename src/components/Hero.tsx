@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import carrera from "@assets/carrera.webp";
 import { motion } from "framer-motion";
+import LegacyLogo from "@assets/PSLegacy.svg";
+import TabLogo from "@assets/Tab-icon.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,7 +77,7 @@ export default function Hero({ heroImageRef, stickyNavRef }: HeroProps) {
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
           >
-            <img src="/PSLegacy.svg" alt="PS logo" className="nav-svg" />
+            <img src={LegacyLogo} alt="PS logo" className="nav-svg" />
           </motion.div>
           <h1>Legacy of Speed</h1>
           <p>From the first dream to the next revolution.</p>
@@ -100,7 +102,7 @@ export default function Hero({ heroImageRef, stickyNavRef }: HeroProps) {
               }}
             >
               <img
-                src="/Tab-icon.svg"
+                src={TabLogo}
                 alt="Project Stuttgart"
                 className="nav-logo"
                 draggable="false"

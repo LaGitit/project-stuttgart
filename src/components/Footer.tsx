@@ -1,5 +1,6 @@
 import { FaGithub, FaStackOverflow, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
+import LegacyLogo from "@assets/PSLegacy.svg";
 
 export default function Footer() {
   return (
@@ -13,7 +14,7 @@ export default function Footer() {
           className="logo-container"
         >
           <img
-            src="/PSLegacy.svg"
+            src={LegacyLogo}
             alt="Project Stuttgart"
             className="footer-logo"
             draggable="false"

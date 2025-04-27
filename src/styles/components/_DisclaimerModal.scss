@@ -1,4 +1,5 @@
 @use "../utils/fonts" as *;
+@use "sass:color";
 
 .disclaimer-overlay {
   position: fixed;
@@ -80,7 +81,7 @@
     margin-top: 1rem;
 
     &:hover {
-      background: darken(#ff0000, 10%);
+      background: color.adjust(#ff0000, $lightness: -10%);
     }
 
     &:focus {
