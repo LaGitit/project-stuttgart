@@ -5,7 +5,10 @@
 
 **A cinematic, scroll-driven tribute to Porsche’s design legacy** – from the 356 to the 2025 Vision concept. Built with React, GSAP, and meticulous attention to detail.  
 
-![Hero Section Preview](https://via.placeholder.com/1920x1080/000000/FFFFFF/?text=Porsche+Legacy+Landing+Page)  
+<div align="center">
+  <img src="/previews/Hero.png" width="800" alt="Initial Hero Section - Porsche 911 Carrera RS 2.7">
+  <p><em>First impression: Full-screen vintage Porsche hero section</em></p>
+</div> 
 
 ---
 
@@ -41,15 +44,24 @@ All copyrighted Porsche assets (including but not limited to: vehicle images, th
 
 ---
 
-## **✨ Features**  
+## **Features**  
 ### **1. Hero → Sticky Nav Transformation**  
+
+<div align="center">
+  <img src="/previews/HeroTransform.png" width="800" alt="Hero Section Compressed into Sticky Navigation">
+  <p><em>Smooth transition to fixed navigation bar on scroll</em></p>
+</div>
 - Full-screen vintage Porsche 911 Carrera RS 2.7 hero image.  
 - Smooth compression into a fixed navigation bar on scroll.  
 - Era-based navigation (1940s–2025) with hover effects.  
 
 ### **2. Parallax Era Sections**  
 - **1948–1960s**: B&W 356 with parallax + SVG line drawing.  
-- **1970s–1980s**: 930 Turbo with dynamic color overlay.  
+- **1970s–1980s**: 930 Turbo with dynamic color overlay.
+ <div align="center">
+    <img src="/previews/Legacy.webp" width="800" alt="930 Turbo Section with Dynamic Overlay">
+    <p><em>1970s Golden Era: 930 Turbo with color-shifting effects</em></p>
+  </div> 
 - **1990s–2000s**: Horizontal-scrolling gallery (GT2, Carrera GT, Taycan).  
 
 ### **3. 2025 Vision Model Reveal**   
@@ -62,17 +74,21 @@ All copyrighted Porsche assets (including but not limited to: vehicle images, th
 
 ---
 
-## **💻 Tech Stack**  
+## **Tech Stack**  
 - **Framework**: [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)  
 - **Styling**: SCSS + CSS Modules  
 - **Animations**: [GSAP](https://greensock.com/gsap/) + [Framer Motion](https://www.framer.com/motion/)  
 - **Performance**: Lazy-loaded WebP images, Intersection Observer  
-- **Legal Compliance**: Dynamic Disclaimer Modal (blocks interaction until accepted).  
+- **Legal Compliance**: Dynamic Disclaimer Modal.
+  <div align="center">
+    <img src="/previews/Disclaimer Modal.png" width="800" alt="Disclaimer">
+    <p><em>Blocks interaction until accepted</em></p>
+  </div> 
 
 ---
 
 
-## **🎨 Usage**  
+## **Usage**  
 - Customize `src/assets/images` with your own Porsche-themed visuals (ensure no copyright violations).  
 - Edit the disclaimer text in `src/components/DisclaimerModal.tsx`.  
 - Deploy via Vercel/Netlify/GitHub Pages:  
@@ -82,17 +98,15 @@ All copyrighted Porsche assets (including but not limited to: vehicle images, th
 
 ---
 
-## **📜 License**  
+## **License**  
 This project is licensed under the **MIT License** – see [LICENSE](LICENSE) for details.  
 
 **Note**: Porsche branding and assets are excluded from this license and remain property of Porsche AG.  
 
 ---
 
-## **🙏 Acknowledgements**  
-- Porsche AG for inspiring this design study.  
-- GSAP for buttery-smooth scroll animations.  
-- [Shields.io](https://shields.io/) for GitHub badges.  
+## **Acknowledgements**  
+- Porsche AG for inspiring this design study.   
 
 ---
 
