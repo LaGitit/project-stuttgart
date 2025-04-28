@@ -111,3 +111,6 @@ This project is licensed under the **MIT License** – see [LICENSE](LICENSE) fo
 ---
 
 **Report Issues**: [GitHub Issues](https://github.com/LaGitit/project-stuttgart/issues)  
+
+
+**Porsche 911 Animation Landing Page | React + GSAP | Scroll animation | Car UI | Interactive timeline**
