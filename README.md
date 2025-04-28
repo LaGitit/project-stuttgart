@@ -21,7 +21,7 @@
 
 ---
 
-## **⚠️ Legal Disclaimer**
+## **⚠️ Legal Disclaimer***
 
 This project ('Project Stuttgart') is an independent, non-commercial design exercise created solely for educational and portfolio demonstration purposes. It is not affiliated with, endorsed by, or sponsored by Porsche AG, Dr. Ing. h.c. F. Porsche AG, or any subsidiaries. All Porsche-related trademarks, logos, vehicle designs, and imagery are the exclusive property of Porsche AG. This project does not represent an official Porsche product, service, or digital property.
 
@@ -35,7 +35,7 @@ All copyrighted Porsche assets (including but not limited to: vehicle images, th
 
 - Porsche AG owns all rights to its branding and intellectual property.
 
-- You will not redistribute Porsche assets from this project."*
+- You will not redistribute Porsche assets from this project.*
 
 
 *This repository’s code (excluding Porsche assets) is MIT-licensed, but Porsche-related content remains proprietary. To request removal of any copyrighted material, contact richardlawal2001@gmail.com.*
