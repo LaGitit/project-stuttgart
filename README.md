@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)  
 [![GitHub Stars](https://img.shields.io/github/stars/LaGitit/project-stuttgart?style=social)](https://github.com/LaGitit/project-stuttgart)  
+[![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages-brightgreen)](https://LaGitit/project-stuttgart)  
+[![Live Demo](https://img.shields.io/badge/Demo-Try%20it%20live-blue)](https://lagitit.github.io/project-stuttgart/)
 
 **A cinematic, scroll-driven tribute to Porsche’s design legacy** – from the 356 to the 2025 Vision concept. Built with React, GSAP, and meticulous attention to detail.  
 
@@ -58,10 +60,12 @@ All copyrighted Porsche assets (including but not limited to: vehicle images, th
 ### **2. Parallax Era Sections**  
 - **1948–1960s**: B&W 356 with parallax + SVG line drawing.  
 - **1970s–1980s**: 930 Turbo with dynamic color overlay.
+  
  <div align="center">
     <img src="/previews/Legacy.webp" width="800" alt="930 Turbo Section with Dynamic Overlay">
     <p><em>1970s Golden Era: 930 Turbo with color-shifting effects</em></p>
   </div> 
+  
 - **1990s–2000s**: Horizontal-scrolling gallery (GT2, Carrera GT, Taycan).  
 
 ### **3. 2025 Vision Model Reveal**   
@@ -80,6 +84,7 @@ All copyrighted Porsche assets (including but not limited to: vehicle images, th
 - **Animations**: [GSAP](https://greensock.com/gsap/) + [Framer Motion](https://www.framer.com/motion/)  
 - **Performance**: Lazy-loaded WebP images, Intersection Observer  
 - **Legal Compliance**: Dynamic Disclaimer Modal.
+  
   <div align="center">
     <img src="/previews/Disclaimer Modal.png" width="800" alt="Disclaimer">
     <p><em>Blocks interaction until accepted</em></p>
